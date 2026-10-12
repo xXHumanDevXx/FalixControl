@@ -1,0 +1,104 @@
+# =====================================================================
+#  FalixControl - Konfiguration        (Änderungen übernehmen: /fc reload)
+#  Befehle ohne "/" eintragen. "*" bedeutet alle Befehle.
+#  Gruppen werden über die Permission falixcontrol.group.<name> vergeben
+#  (z. B. mit LuckPerms). Ohne Rechte-Plugin greift die Standardgruppe.
+# =====================================================================
+
+settings:
+  default-group: spieler       # Gruppe für alle, die keiner Gruppe angehören
+  hide-commands: true          # true = Befehle werden in der Tab-Liste ausgeblendet
+
+# ---------------------------------------------------------------------
+#  Gruppen
+#  Die Reihenfolge zählt: Die erste passende Gruppe gewinnt.
+# ---------------------------------------------------------------------
+groups:
+  admin:
+    commands:
+      - "*"
+
+  mod:
+    commands:
+      - help
+      - list
+      - msg
+      - tell
+      - r
+      - ban
+      - unban
+      - kick
+      - mute
+      - unmute
+      - timeout
+      - untimeout
+      - warn
+      - warnings
+      - clearwarns
+      - fg
+
+  spieler:
+    commands:
+      - ultimate
+      - help
+      - list
+      - msg
+      - tell
+      - r
+
+# ---------------------------------------------------------------------
+#  Einzelne Spieler
+#  Ein Eintrag hier überschreibt die Gruppe komplett.
+#  Schreibweise: Spielername, darunter die erlaubten Befehle.
+# ---------------------------------------------------------------------
+players: {}
+#  Beispiel:
+#  MaxMustermann:
+#    - help
+#    - spawn
+
+# ---------------------------------------------------------------------
+#  Nachrichten
+# ---------------------------------------------------------------------
+messages:
+  prefix: "&8[&bFalixControl&8] &7"
+  usage: "{prefix}&cBenutzung: &f{usage}"
+  reload-done: "{prefix}&aKonfiguration neu geladen. Tab-Listen wurden aktualisiert."
+  player-offline: "{prefix}&cSpieler &f{player} &cist nicht online."
+  command-blocked: "{prefix}&cDieser Befehl ist für dich nicht verfügbar. &8(&f/{command}&8)"
+  check-header: "{prefix}&eBefehle von &f{player}&e:"
+  check-source: "&8 Quelle: &7{source}"
+  check-commands: "&8 Befehle: &7{commands}"
+  test-allowed: "{prefix}&a{player} darf &f/{command}&a benutzen."
+  test-denied: "{prefix}&c{player} darf &f/{command}&c nicht benutzen."
+  perk-usage: "{prefix}&cBenutzung: &f/ultimate [info <Spieler> | grant <Spieler> <Tage> | remove <Spieler> | list]"
+  perk-no-permission: "{prefix}&cDazu hast du keine Berechtigung."
+  perk-player-not-found: "{prefix}&cSpieler &f{player} &cwurde nicht gefunden."
+  perk-invalid-days: "{prefix}&cDie Tage müssen eine Zahl über 0 sein."
+  perk-status-active: "{prefix}&aDu hast &6{name} &aaktiv bis &f{until}&a."
+  perk-status-inactive: "{prefix}&7Du hast kein &6{name}&7. Preis: &f{price}&7."
+  perk-granted: "{prefix}&a{name} für &f{player} &averlängert um &f{days} Tage&a. Aktiv bis &f{until}&a."
+  perk-granted-you: "{prefix}&aDein &6{name} &awurde um &f{days} Tage &averlängert. Aktiv bis &f{until}&a."
+  perk-revoked: "{prefix}&e{player} hat kein &6{name} &emehr."
+  perk-not-active: "{prefix}&c{player} hat kein aktives {name}."
+  perk-expired: "{prefix}&7Dein &6{name} &7ist abgelaufen. Danke für deine Unterstützung!"
+  perk-info-active: "{prefix}&f{player} &ahat {name} bis &f{until}&a."
+  perk-info-inactive: "{prefix}&f{player} &chat kein aktives {name}."
+  perk-list-header: "{prefix}&6Aktive Spieler &8(&f{count}&8)&6:"
+  perk-list-entry: "&8 - &7{player} &8(&f{until}&8)"
+  perk-list-none: "{prefix}&7Es gibt keine aktiven Spieler."
+
+# ---------------------------------------------------------------------
+#  Perks (XCraftUltimate)
+#  Abos werden vergeben: /ultimate grant <Spieler> <Tage>
+#  Die Zahlung läuft außerhalb des Servers. Dieses Plugin nimmt kein Geld.
+#  permissions: Rechte, die ein aktiver Spieler bekommt.
+#    falixteleport.homes.6   = 6 Homes (FalixTeleport)
+#    falixstats.tab.ultimate = Ultimate-Rang im Tab-Menü (FalixStats)
+# ---------------------------------------------------------------------
+perks:
+  name: "XCraftUltimate"
+  price: "50 Cent / 2 Wochen"
+  permissions:
+    - "falixteleport.homes.6"
+    - "falixstats.tab.ultimate"

@@ -1,0 +1,32 @@
+name: FalixControl
+version: 1.0.0
+main: de.falixcontrol.FalixControl
+api-version: '1.21'
+description: Blendet Befehle pro Gruppe oder Spieler aus und sperrt sie
+
+commands:
+  falixcontrol:
+    description: Befehlssichtbarkeit verwalten
+    usage: /falixcontrol <reload | check <Spieler> | test <Spieler> <Befehl>>
+    aliases: [fcontrol, fc]
+    permission: falixcontrol.admin
+
+  ultimate:
+    description: Perk-Abos anzeigen oder verwalten
+    usage: /ultimate [info | grant | remove | list]
+    aliases: [ult]
+    permission: falixcontrol.perks.use
+
+permissions:
+  falixcontrol.admin:
+    description: Darf /falixcontrol benutzen
+    default: op
+  falixcontrol.bypass:
+    description: Sieht und nutzt alle Befehle, wird nicht eingeschränkt
+    default: op
+  falixcontrol.perks.use:
+    description: Darf den eigenen Perk-Status anzeigen
+    default: true
+  falixcontrol.perks.admin:
+    description: Darf Perk-Abos vergeben und entfernen
+    default: op
